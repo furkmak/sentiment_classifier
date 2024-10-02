@@ -11,6 +11,11 @@ import mlflow
 import mlflow.sklearn
 from mlflow.models.signature import infer_signature
 import joblib
+from joblib import dump
+import os
+
+# Set the current directory to the directory of the script
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 # Load your dataset
 data = pd.read_csv('data/dataset.csv')
@@ -105,5 +110,5 @@ with mlflow.start_run():
     print("Model and metrics logged to MLflow.")
 
 # Save the model and vectorizer locally as well
-joblib.dump(pipeline, 'model/rf_pipe.pkl')
+joblib.dump(pipeline, 'model/rf_pipe.joblib.gz', compress=('gzip', 3))
 print("Model and vectorizer saved locally.")

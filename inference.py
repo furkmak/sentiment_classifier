@@ -8,7 +8,7 @@ from mlflow import MlflowClient
 client = MlflowClient()
 
 # Load new data for prediction
-new_data = pd.read_csv('data/dataset_test.csv', encoding='utf-8')
+new_data = pd.read_csv('./data/dataset_test.csv', encoding='utf-8')
 X_new = new_data['text']
 
 mlflow.set_tracking_uri(uri="http://127.0.0.1:5000")
@@ -39,5 +39,5 @@ print(predictions)
 
 # Optionally, save predictions to a CSV file
 new_data['predictions'] = predictions
-new_data.to_csv('data/test_pred.csv', index=False)
+new_data.to_csv('./data/test_pred.csv', index=False)
 print("Predictions saved to 'test_pred.csv'")
