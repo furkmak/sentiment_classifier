@@ -3,7 +3,10 @@ from evidently import ColumnMapping
 from evidently.report import Report
 from evidently.metrics import EmbeddingsDriftMetric
 from sentence_transformers import SentenceTransformer
+import os
 
+# Set the current directory to the directory of the script
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 # Load current data
 current = pd.read_csv('data/dataset_test.csv', encoding='utf-8')
 current_data = current.sample(n=1000)
